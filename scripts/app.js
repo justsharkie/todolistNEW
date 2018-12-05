@@ -1,5 +1,5 @@
 angular 
-.module('myApp', ['firebase'])
+.module('myApp', ['ngRoute', 'firebase'])
 // Initialize Firebase
 .constant('firebaseConfig', {
     apiKey: "AIzaSyCxp97FqBuCDRNKs2F7IcviGRot-USebW4",
@@ -14,9 +14,14 @@ angular
 }) // end run
 .controller('todoCtrl', function($scope, $firebaseObject, $firebaseArray) {
     var dbref = firebase.database().ref().child('todos')
+    this.blankTodo = function () {
+        ({
+            title: ''
+        })
+    }
     $scope.todos = $firebaseArray(dbref)
-    
-    $scope.addTodo = () => {
+    $scope.newTodo = this.blankTodo()
+    $scope.addTodo = function () {
         $scope.newTodo.completed = false;
         $scope.todos.$add($scope.newTodo)
         $scope.newTodo = this.blankTodo()

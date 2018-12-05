@@ -9,15 +9,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body ng-app="myApp">
+   <li ng-repeat="todo in allItems track by todo.$id">
+       <span>{{todo.title}}</span>
+   </li>
+   
     <section>
         <form ng-submit="saveTodo(todo)">
             <input type="text" ng-model="todo.title">
         </form>
     </section>
-    
+    <!-- angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
     <!-- custom javascript -->
     <script src="scripts/app.js"></script>
     <!-- firebase setup -->
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+    <!-- ngRoute -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 </body>
 </html>
